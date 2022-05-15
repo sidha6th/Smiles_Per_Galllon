@@ -8,17 +8,19 @@ class HomeAppBarWidget extends StatelessWidget {
   final TabController? tabController;
 
   @override
-  @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       floating: true,
       backgroundColor: transp,
-      leading: const CircleAvatar(),
+      leading: const DpHoldingWidget(
+        radius: 17,
+      ),
       actions: <Widget>[
         IconButton(
           onPressed: () {},
           icon: const Icon(
             Icons.chat_bubble_outline_outlined,
+            color: black,
           ),
         ),
       ],

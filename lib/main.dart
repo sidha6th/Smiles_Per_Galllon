@@ -11,7 +11,7 @@ class SmilesPerGallon extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: themeData,
-      home: const SignUpScreen(),
+      home: const HomeLayout(),
     );
   }
 }

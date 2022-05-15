@@ -27,6 +27,7 @@ class IntroMainImgBannerWidget extends StatelessWidget {
         child: Center(
           child: CustomTextWidget(
             text: ''' EVERY CAR GUY HAVE\nSOMETHING TO SHARE''',
+            textColor: white,
             weight: FontWeight.bold,
           ),
         ),

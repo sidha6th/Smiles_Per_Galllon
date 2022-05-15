@@ -20,18 +20,19 @@ class OnBoardCardWidget extends StatelessWidget {
        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           SizedBox(
-            width: size.width / 2,
+            width: size.width / 2-10,
             child: Center(
               child: CustomTextWidget(
                 text: textData,
                 textColor: black,
                 size: 23,
+                maxlines: 9,
               ),
             ),
           ),
           Center(
             child: Image(
-              width: size.width / 2,
+              width: size.width / 2-10,
               image: AssetImage(logo),
             ),
           ),

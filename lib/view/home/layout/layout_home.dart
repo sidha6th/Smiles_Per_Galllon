@@ -9,10 +9,9 @@ class HomeLayout extends StatefulWidget {
 
 class _HomeLayoutState extends State<HomeLayout>
     with SingleTickerProviderStateMixin {
-  late final TabController tabController;
   @override
   void initState() {
-    tabController = TabController(
+    LayoutState.tabController = TabController(
       length: 4,
       vsync: this,
       initialIndex: 0,
@@ -25,23 +24,19 @@ class _HomeLayoutState extends State<HomeLayout>
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: NestedScrollView(
+        controller: LayoutState.scrollController,
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, bool isbool) {
-          //print(isbool);
           return [
             HomeAppBarWidget(
-              tabController: tabController,
+              tabController: LayoutState.tabController,
             )
           ];
         },
         body: TabBarView(
-          controller: tabController,
+          controller: LayoutState.tabController,
           children: <Widget>[
-            SizedBox(
-              height: size.height,
-              width: size.width,
-              child: const NewsScreen(),
-            ),
+            const NewsScreen(),
             SizedBox(
               width: size.width,
               height: size.height,
@@ -60,6 +55,20 @@ class _HomeLayoutState extends State<HomeLayout>
           ],
         ),
       ),
+      bottomNavigationBar:
+          DraggableScrollableSheet(
+            initialChildSize: 0.5,
+            minChildSize: 0.5,
+            maxChildSize: 1,
+            snap: true,
+            snapSizes: const [0.5,0.6,0.7,0.8,0.9,1.0],
+            controller: LayoutState.dragableScrollableSheetController,
+            builder: (context, scrollController) {
+        return Container(
+          height: 300,
+          color: grey,
+        );
+      }),
     );
   }
 }

@@ -5,8 +5,16 @@ class ArticlesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('articles')),
+    return Scaffold(
+      body: ListView.separated(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 0,
+        ),
+        itemCount: 20,
+        itemBuilder: (_, index) => const DataHoldingCard(),
+        separatorBuilder: (_, index) => space10,
+      ),
     );
   }
 }

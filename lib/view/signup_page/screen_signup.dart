@@ -6,92 +6,67 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        maintainBottomViewPadding: true,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              PreferredSize(
-                child: Row(
-                  children: <Widget>[
-                    const CustomTextWidget(
-                      text: 'Sign Up',
-                      textColor: black,
-                      weight: FontWeight.bold,
-                      size: 20,
-                    ),
-                    const Spacer(),
-                    TextButton(
-                      onPressed: () {},
-                      child: const CustomTextWidget(
-                        text: 'Log In',
-                        textColor: lightBlue,
-                      ),
-                    ),
-                  ],
-                ),
-                preferredSize: Size(
-                  MediaQuery.of(context).size.width,
-                  50,
-                ),
-              ),
-              MediaQuery.of(context).viewInsets.bottom == 0
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 20,
-                      ),
-                      child: Container(
-                        width: double.infinity,
-                        constraints: const BoxConstraints(
-                            maxHeight: 200, minHeight: 100),
-                        child: FittedBox(
-                          child: Image.asset(
-                            'assets/images/SMILES PER GALLON.png',
-                          ),
-                        ),
-                      ),
-                    )
-                  : const SizedBox(),
-              SingleChildScrollView(
-                reverse: true,
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const <Widget>[
-                      CustomTextFormField(
-                        hintText: 'Username',
-                      ),
-                      space10,
-                      CustomTextFormField(
-                        hintText: 'Email ID',
-                      ),
-                      space10,
-                      CustomTextFormField(
-                        hintText: 'Phone Number',
-                      ),
-                      space10,
-                      CustomPasswordTextFormFieldWidget(
-                        hintText: 'Password',
-                      ),
-                      space10,
-                      CustomPasswordTextFormFieldWidget(
-                        hintText: 'Confirm Password',
-                        obscureControll: false,
-                      ),
-                      space10,
-                      CustomSubmitButton(),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
+      body: ListView(
+        reverse: true,
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 20,
         ),
+        shrinkWrap: true,
+        children: <Widget>[
+          CustomFakeAppBarWidget(
+            navigationTo: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const LoginScreen(),
+                ),
+              );
+            },
+            heading: 'Sign Up',
+            buttonText: 'Log In',
+          ),
+          const MainBannerImgHoldingwidget(),
+          SizedBox(
+            height: 400,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                CustomTextFormField(
+                  hintText: 'Username',
+                  controller: SignUpState.nameController,
+                ),
+                space10,
+                CustomTextFormField(
+                  hintText: 'Email ID',
+                  controller: SignUpState.emailController,
+                ),
+                space10,
+                CustomTextFormField(
+                  hintText: 'Phone Number',
+                  controller: SignUpState.phoneNumberController,
+                ),
+                space10,
+                CustomPasswordTextFormFieldWidget(
+                  hintText: 'Password',
+                  obscureControll: true,
+                  controller: SignUpState.passwordController,
+                  focusNode: SignUpState.confirmPassfocusNode,
+                ),
+                space10,
+                CustomPasswordTextFormFieldWidget(
+                  hintText: 'Confirm Password',
+                  controller: SignUpState.confirmPasswordController,
+                  confirmPassfocusNode: SignUpState.confirmPassfocusNode,
+                ),
+                space10,
+                const CustomSubmitButton(
+                  buttonText: 'Sign Up',
+                ),
+              ],
+            ),
+          ),
+        ].reversed.toList(),
       ),
     );
   }

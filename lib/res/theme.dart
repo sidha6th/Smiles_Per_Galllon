@@ -8,6 +8,14 @@ class MyAppTheme {
     iconTheme: const IconThemeData(
       color: grey,
     ),
+    textTheme: const TextTheme(
+      bodySmall: TextStyle(color: Colors.black),
+    ),
+    primaryIconTheme: const IconThemeData(
+      color: black,
+      size: 20,
+    ),
+    scaffoldBackgroundColor: white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
@@ -31,6 +39,10 @@ class MyAppTheme {
     iconTheme: const IconThemeData(
       color: white,
     ),
+    primaryIconTheme: const IconThemeData(
+      color: white,
+      size: 20,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: transp,
       foregroundColor: transp,
@@ -43,5 +55,4 @@ class MyAppTheme {
     ),
   );
 // *==============================================================*//
-
 }

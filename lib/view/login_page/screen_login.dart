@@ -6,69 +6,55 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 10,
+      body: ListView(
+        shrinkWrap: true,
+        reverse: true,
+        padding: const EdgeInsets.all(20),
+        children: <Widget>[
+          CustomFakeAppBarWidget(
+            navigationTo: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const SignUpScreen(),
+                ),
+              );
+            },
+            heading: 'Log In',
+            buttonText: 'Sign Up',
           ),
-          child: Column(
-            children: <Widget>[
-              PreferredSize(
-                child: Row(
-                  children: <Widget>[
-                    const CustomTextWidget(
-                      text: 'Log In',
-                      textColor: black,
-                      weight: FontWeight.bold,
-                      size: 20,
-                    ),
-                    const Spacer(),
-                    TextButton(
-                      onPressed: () {},
-                      child: const CustomTextWidget(
-                        text: 'Sign Up',
-                        textColor: lightBlue,
-                      ),
-                    ),
-                  ],
-                ),
-                preferredSize: Size(
-                  MediaQuery.of(context).size.width,
-                  50,
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 200,
-                child: FittedBox(
-                  child: Image.asset(
-                    'assets/images/SMILES PER GALLON.png',
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: const <Widget>[
-                      CustomTextFormField(
-                        hintText: 'Email ID',
-                      ),
-                      SizedBox(
-                        height: 13,
-                      ),
-                      CustomPasswordTextFormFieldWidget(
-                        hintText: 'Password',
-                      ),
-                      CustomSubmitButton(),
-                    ],
-                  ),
-                ),
+          space10,
+          const MainBannerImgHoldingwidget(),
+          space10,
+          CustomTextFormField(
+            hintText: 'Email ID',
+            controller: LoginState.emailController,
+          ),
+          space10,
+          CustomPasswordTextFormFieldWidget(
+            hintText: 'Password',
+            obscureControll: true,
+            controller: LoginState.passwordController,
+          ),
+          space10,
+          Column(
+            children: const <Widget>[
+              CustomSubmitButton(
+                buttonText: 'Log In',
               ),
             ],
           ),
-        ),
+          CustomTextButtonWidget(
+              navigationTo: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const PhoneNumberLoginPage(),
+                  ),
+                );
+              },
+              buttonText: 'Log In with OTP')
+        ].reversed.toList(),
       ),
     );
   }
