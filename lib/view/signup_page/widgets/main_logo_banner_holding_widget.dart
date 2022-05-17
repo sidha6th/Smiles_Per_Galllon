@@ -16,8 +16,8 @@ class MainBannerImgHoldingwidget extends StatelessWidget {
         ),
         child: Image.asset(
           'assets/images/SMILES PER GALLON.png',
-          width:isIntro?40: double.infinity,
-          height:isIntro?50:MediaQuery.of(context).size.height * 0.3,
+          width: isIntro ? 40 : double.infinity,
+          height: isIntro ? 50 : context.getSize().height * 0.3,
         ),
       ),
     );

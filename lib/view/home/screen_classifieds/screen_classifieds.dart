@@ -8,36 +8,20 @@ class ClassiFiedsPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
+          const Padding(
+            padding: EdgeInsets.only(
               top: 19.0,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  splashColor: transp,
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.filter_list_outlined,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(right: 10),
-                  constraints:
-                      const BoxConstraints(maxWidth: 150, minWidth: 70),
-                  child: const CupertinoSearchTextField(),
-                ),
-              ],
-            ),
+            child: UserControllbarWidget(),
           ),
           Expanded(
             child: GridView.builder(
+              padding: LayoutState.homeListPadding,
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 140,
+                maxCrossAxisExtent: 120,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                mainAxisExtent: 190,
+                mainAxisExtent: 180,
               ),
               itemCount: 20,
               itemBuilder: (_, index) => Container(

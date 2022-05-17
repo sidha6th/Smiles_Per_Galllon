@@ -4,9 +4,10 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     required this.hintText,
     required this.controller,
-    this.keyboardType=TextInputType.name,
+    this.keyboardType = TextInputType.name,
     this.sufix = const SizedBox(),
     this.obscure = false,
+    this.borderRadius=10,
     Key? key,
   }) : super(key: key);
   final String hintText;
@@ -14,6 +15,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget sufix;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final double borderRadius;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -32,7 +34,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           gapPadding: 0,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           borderSide: const BorderSide(
             color: lightBlue,
             style: BorderStyle.solid,
@@ -40,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
         ),
         border: OutlineInputBorder(
           gapPadding: 0,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(borderRadius),
           borderSide: const BorderSide(
             color: black,
             style: BorderStyle.solid,

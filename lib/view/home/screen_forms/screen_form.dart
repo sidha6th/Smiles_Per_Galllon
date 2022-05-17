@@ -8,35 +8,15 @@ class FormPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(
+          const Padding(
+            padding: EdgeInsets.only(
               top: 19.0,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  splashColor: transp,
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.filter_list_outlined,
-                  ),
-                ),
-                Container(
-                  padding: const EdgeInsets.only(right: 10),
-                  constraints:
-                      const BoxConstraints(maxWidth: 150, minWidth: 70),
-                  child: const CupertinoSearchTextField(),
-                ),
-              ],
-            ),
+            child: UserControllbarWidget(),
           ),
           Expanded(
             child: ListView.separated(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10,
-                vertical: 0,
-              ),
+              padding: LayoutState.homeListPadding,
               shrinkWrap: true,
               itemCount: 20,
               itemBuilder: (_, index) => const FormDataHoldingWidget(),

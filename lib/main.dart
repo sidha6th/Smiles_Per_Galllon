@@ -1,6 +1,5 @@
 import 'package:smiles_per_gallon/extra/exports.dart';
 
-
 void main() => runApp(const SmilesPerGallon());
 
 class SmilesPerGallon extends StatelessWidget {

@@ -12,12 +12,28 @@ class HomeAppBarWidget extends StatelessWidget {
     return SliverAppBar(
       floating: true,
       backgroundColor: transp,
+      foregroundColor: transp,
       leading: const DpHoldingWidget(
-        radius: 17,
+        radius: 13,
+      ),
+      title: Image.asset(
+        'assets/images/vertical text logo img.png',
+        width: double.infinity,
+        height: context.getSize().height * 0.3,
       ),
       actions: <Widget>[
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            LayoutState.dragableScrollableSheetController!.size >= 0.5
+                ? LayoutState.dragableScrollableSheetController!.reset()
+                : LayoutState.dragableScrollableSheetController!.animateTo(
+                    0.5,
+                    duration: const Duration(
+                      milliseconds: 100,
+                    ),
+                    curve: Curves.bounceOut,
+                  );
+          },
           icon: const Icon(
             Icons.chat_bubble_outline_outlined,
             color: black,

@@ -5,6 +5,11 @@ class LayoutState {
   static final ScrollController scrollController = ScrollController(
     initialScrollOffset: 0,
   );
-  static final DraggableScrollableController dragableScrollableSheetController =
-      DraggableScrollableController();
+  static  DraggableScrollableController? dragableScrollableSheetController;
+  static const EdgeInsets homeListPadding = EdgeInsets.only(
+    left: 10,
+    right: 10,
+    bottom: 25,
+    top: 5,
+  );
 }

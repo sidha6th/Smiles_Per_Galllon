@@ -11,10 +11,10 @@ class MyAppTheme {
     textTheme: const TextTheme(
       bodySmall: TextStyle(color: Colors.black),
     ),
-    primaryIconTheme: const IconThemeData(
-      color: black,
-      size: 20,
-    ),
+    // primaryIconTheme: const IconThemeData(
+    //   color: black,
+    //   size: 20,
+    // ),
     scaffoldBackgroundColor: white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

@@ -16,7 +16,16 @@ class _HomeLayoutState extends State<HomeLayout>
       vsync: this,
       initialIndex: 0,
     );
+    LayoutState.dragableScrollableSheetController =
+        DraggableScrollableController();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    LayoutState.tabController.dispose();
+    LayoutState.dragableScrollableSheetController?.dispose();
+    super.dispose();
   }
 
   @override
@@ -33,42 +42,34 @@ class _HomeLayoutState extends State<HomeLayout>
             )
           ];
         },
-        body: TabBarView(
-          controller: LayoutState.tabController,
-          children: <Widget>[
-            const NewsScreen(),
-            SizedBox(
-              width: size.width,
-              height: size.height,
-              child: const ArticlesPage(),
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            TabBarView(
+              controller: LayoutState.tabController,
+              children: <Widget>[
+                const NewsScreen(),
+                SizedBox(
+                  width: size.width,
+                  height: size.height,
+                  child: const ArticlesPage(),
+                ),
+                SizedBox(
+                  width: size.width,
+                  height: size.height,
+                  child: const FormPage(),
+                ),
+                SizedBox(
+                  width: size.width,
+                  height: size.height,
+                  child: const ClassiFiedsPage(),
+                ),
+              ],
             ),
-            SizedBox(
-              width: size.width,
-              height: size.height,
-              child: const FormPage(),
-            ),
-            SizedBox(
-              width: size.width,
-              height: size.height,
-              child: const ClassiFiedsPage(),
-            ),
+            const MainChatHoldingWidgetSheet(),
           ],
         ),
       ),
-      bottomNavigationBar:
-          DraggableScrollableSheet(
-            initialChildSize: 0.5,
-            minChildSize: 0.5,
-            maxChildSize: 1,
-            snap: true,
-            snapSizes: const [0.5,0.6,0.7,0.8,0.9,1.0],
-            controller: LayoutState.dragableScrollableSheetController,
-            builder: (context, scrollController) {
-        return Container(
-          height: 300,
-          color: grey,
-        );
-      }),
     );
   }
 }

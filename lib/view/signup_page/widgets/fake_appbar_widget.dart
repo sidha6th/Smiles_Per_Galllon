@@ -5,33 +5,46 @@ class CustomFakeAppBarWidget extends StatelessWidget {
     required this.navigationTo,
     required this.heading,
     required this.buttonText,
+    this.leadingWidth = 0,
     this.isIntro = false,
+    this.leadingWidget = emptyBx,
+    this.centerTitle=false,
     Key? key,
   }) : super(key: key);
   final String heading;
   final String buttonText;
   final Function navigationTo;
   final bool isIntro;
+  final double leadingWidth;
+  final Widget leadingWidget;
+  final bool centerTitle;
 
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
       child: AppBar(
-        centerTitle: false,
-        leadingWidth: 0,
-        title: isIntro == true
-            ? Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: MainBannerImgHoldingwidget(
-                  isIntro: isIntro,
-                ),
+        centerTitle: centerTitle,
+        leadingWidth: leadingWidth,
+        leading: leadingWidget,
+        title: leadingWidth != 0
+            ? Image.asset(
+                'assets/images/vertical text logo img.png',
+                width: isIntro ? 40 : double.infinity,
+                height: isIntro ? 50 : MediaQuery.of(context).size.height * 0.3,
               )
-            : CustomTextWidget(
-                text: heading,
-                textColor: black,
-                weight: FontWeight.bold,
-                size: 20,
-              ),
+            : isIntro == true
+                ? Padding(
+                    padding: const EdgeInsets.only(top: 5.0),
+                    child: MainBannerImgHoldingwidget(
+                      isIntro: isIntro,
+                    ),
+                  )
+                : CustomTextWidget(
+                    text: heading,
+                    textColor: black,
+                    weight: FontWeight.bold,
+                    size: 20,
+                  ),
         actions: [
           CustomTextButtonWidget(
             navigationTo: navigationTo,

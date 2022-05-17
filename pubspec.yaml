@@ -13,9 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  pinput: ^2.2.7
+  pinput: ^2.2.8
   shimmer: ^2.0.0
-  flutter_riverpod: ^1.0.3
+  flutter_riverpod: ^1.0.4
 #*====================*#
 dev_dependencies:
   flutter_test:

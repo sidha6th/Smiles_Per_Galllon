@@ -5,3 +5,4 @@ const Color black = Colors.black;
 const Color white = Colors.white;
 const Color grey = Colors.grey;
 const Color lightBlue = Color.fromARGB(255, 102, 213, 238);
+const Color darkBlue = Color.fromARGB(255, 1, 62, 90);

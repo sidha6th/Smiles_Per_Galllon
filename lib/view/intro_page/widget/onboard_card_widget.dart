@@ -11,16 +11,15 @@ class OnBoardCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return SizedBox(
       height: 200,
-      width: size.width,
+      width: context.getSize().width,
       child: Row(
-       crossAxisAlignment: CrossAxisAlignment.start,
-       mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           SizedBox(
-            width: size.width / 2-10,
+            width: context.getSize().width / 2 - 10,
             child: Center(
               child: CustomTextWidget(
                 text: textData,
@@ -32,7 +31,7 @@ class OnBoardCardWidget extends StatelessWidget {
           ),
           Center(
             child: Image(
-              width: size.width / 2-10,
+              width: context.getSize().width / 2 - 10,
               image: AssetImage(logo),
             ),
           ),

@@ -2,8 +2,10 @@ import 'package:smiles_per_gallon/extra/exports.dart';
 
 class ImgHoldingWidget extends StatelessWidget {
   const ImgHoldingWidget({
+    this.img='',
     Key? key,
   }) : super(key: key);
+  final String img;
 
   @override
   Widget build(BuildContext context) {

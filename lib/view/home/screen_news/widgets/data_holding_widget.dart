@@ -13,24 +13,34 @@ class DataHoldingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        const ImgHoldingWidget(),
-        const CustomTextWidget(
-          text: NewsPageState.content,
-          maxlines: 3,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: <Widget>[
-            CustomTextButtonWidget(
-              navigationTo: () {},
-              buttonText: 'More',
-              textUnderline: TextDecoration.underline,
-            )
-          ],
-        ),
-      ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const DetailedScreen(),
+          ),
+        );
+      },
+      child: Column(
+        children: <Widget>[
+          const ImgHoldingWidget(),
+          const CustomTextWidget(
+            text: NewsPageState.content,
+            maxlines: 3,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              CustomTextButtonWidget(
+                navigationTo: () {},
+                buttonText: 'More',
+                textUnderline: TextDecoration.underline,
+              )
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
